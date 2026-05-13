@@ -3,25 +3,33 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- A-Frame and MindAR CDN Links -->
-    <script src="aframe.io"></script>
-    <script src="jsdelivr.net"></script>
+
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
-  <body style="margin: 0px; overflow: hidden;">
-    <!-- Core AR Scene Setup -->
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind; uiScanning: yes;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      mindar-image="imageTargetSrc: ./MonkeyTarget.mind; uiScanning: yes;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false">
+
       <a-assets>
-        <!-- Change 'my_model.glb' to match your actual model's file name exactly -->
-        <a-asset-item id="exhibitModel" src="./my_model.glb"></a-asset-item>
+        <a-asset-item id="exhibitModel" src="./Stop_Sign.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- targetIndex: 0 links to the image you compiled -->
-      
-        <!-- Spawns your model over the poster. Scale adjusted for browser viewport. -->
-        <a-gltf-model src="#exhibitModel" position="0 0 0" scale="0.5 0.5 0.5" rotation="0 0 0"></a-gltf-model>
-      
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model
+          src="#exhibitModel"
+          position="0 0 0.1"
+          scale="0.5 0.5 0.5"
+          rotation="0 0 0">
+        </a-gltf-model>
+      </a-entity>
     </a-scene>
   </body>
 </html>
