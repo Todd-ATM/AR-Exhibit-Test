@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- A-Frame and MindAR CDN Links -->
+    <script src="aframe.io"></script>
+    <script src="jsdelivr.net"></script>
+  </head>
+  <body style="margin: 0px; overflow: hidden;">
+    <!-- Core AR Scene Setup -->
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; uiScanning: yes;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <!-- Change 'my_model.glb' to match your actual model's file name exactly -->
+        <a-asset-item id="exhibitModel" src="./my_model.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- targetIndex: 0 links to the image you compiled -->
+      
+        <!-- Spawns your model over the poster. Scale adjusted for browser viewport. -->
+        <a-gltf-model src="#exhibitModel" position="0 0 0" scale="0.5 0.5 0.5" rotation="0 0 0"></a-gltf-model>
+      
+    </a-scene>
+  </body>
+</html>
